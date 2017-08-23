@@ -2,8 +2,6 @@ FROM ubuntu:17.04
 
 MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update
 RUN apt-get -y --force-yes install wget apt-transport-https
 
@@ -28,10 +26,9 @@ libterm-readline-perl-perl \
 libxml-simple-perl \
 libdbd-pg-perl
 
-RUN wget -qO - https://debian.fhem.de/archive.key | apt-key add -
-RUN echo "deb https://debian.fhem.de/stable ./" | tee -a /etc/apt/sources.list.d/fhem.list
-RUN apt-get update
-RUN apt-get -y --force-yes install supervisor fhem telnet
+RUN wget http://fhem.de/fhem-5.8.deb
+RUN dpkg -i fhem-5.8.deb
+RUN apt-get -y --force-yes install supervisor telnet
 RUN mkdir -p /var/log/supervisor
 
 RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure tzdata
