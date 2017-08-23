@@ -1,4 +1,4 @@
-FROM ubuntu:17.4
+FROM ubuntu:17.04
 
 MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
 
