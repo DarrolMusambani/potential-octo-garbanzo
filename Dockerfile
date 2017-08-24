@@ -52,8 +52,11 @@ RUN echo $TZ > /etc/timezone && \
     apt-get install -y tzdata && \
     rm /etc/localtime && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata && \
-    apt-get clean
+    dpkg-reconfigure -f noninteractive tzdata && 
+
+#Cleaning up
+RUN apt-get clean
+RUN rm /fhem-5.8.deb
 
 #Copy supervisor configuration
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
