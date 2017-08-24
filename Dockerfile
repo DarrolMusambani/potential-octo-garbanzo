@@ -5,8 +5,16 @@ MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
 ENV supervisor_conf /etc/supervisor/conf.d/supervisord.conf
 ENV TZ 'Europe/Berlin'
 
+# Install Main Packages
 RUN apt-get update
-RUN apt-get -y --force-yes install wget apt-transport-https
+RUN apt-get -y --force-yes install wget  \
+apt-transport-https  \
+mosquitto-clients \
+supervisor \
+telnet \
+postgresql-client \
+nano \
+build-essential 
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -33,12 +41,11 @@ libcgi-pm-perl \
 sqlite3 \
 libdbd-sqlite3-perl \
 libtext-diff-perl \
-libdbi-perl
+libdbi-perl \
+cpanminus \
 
-RUN wget http://fhem.de/fhem-5.8.deb
-RUN dpkg -i fhem-5.8.deb
-RUN apt-get -y --force-yes install supervisor telnet postgresql-client nano
-RUN mkdir -p /var/log/supervisor
+RUN cpanm Net::MQTT::Simple
+RUN cpanm Net::MQTT::Constants
 
 # Set the locale
 RUN apt-get install -y locales locales-all
@@ -54,11 +61,15 @@ RUN echo $TZ > /etc/timezone && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && 
 
+RUN wget http://fhem.de/fhem-5.8.deb
+RUN dpkg -i fhem-5.8.deb
+
 #Cleaning up
-RUN apt-get clean
+RUN apt-get clean && apt-get autoremove
 RUN rm /fhem-5.8.deb
 
 #Copy supervisor configuration
+RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 VOLUME ["/opt/fhem"]
