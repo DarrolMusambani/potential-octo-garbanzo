@@ -62,7 +62,7 @@ RUN echo $TZ > /etc/timezone && \
     apt-get install -y tzdata && \
     rm /etc/localtime && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata && 
+    dpkg-reconfigure -f noninteractive tzdata
 
 RUN wget http://fhem.de/fhem-5.8.deb
 RUN dpkg -i fhem-5.8.deb
