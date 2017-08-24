@@ -2,6 +2,8 @@ FROM ubuntu:17.04
 
 MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
 
+ENV supervisor_conf /etc/supervisor/supervisord.conf
+
 RUN apt-get update
 RUN apt-get -y --force-yes install wget apt-transport-https
 
@@ -40,7 +42,8 @@ RUN mkdir -p /var/log/supervisor
 
 #RUN timedatectl set-timezone Europe/Berlin
 
-#COPY ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+#Copy supervisor configuration
+COPY supervisord.conf ${supervisor_conf}
 
 VOLUME ["/opt/fhem"]
 EXPOSE 8083
