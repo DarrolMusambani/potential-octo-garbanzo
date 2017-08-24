@@ -35,7 +35,7 @@ libdbi-perl
 
 RUN wget http://fhem.de/fhem-5.8.deb
 RUN dpkg -i fhem-5.8.deb
-RUN apt-get -y --force-yes install supervisor telnet postgresql-client nano
+RUN apt-get -y --force-yes install supervisor telnet postgresql-client nano timedatectl
 RUN mkdir -p /var/log/supervisor
 
 RUN timedatectl set-timezone Europe/Berlin
