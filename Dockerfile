@@ -2,7 +2,7 @@ FROM ubuntu:17.04
 
 MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
 
-ENV supervisor_conf /etc/supervisor/supervisord.conf
+ENV supervisor_conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get update
 RUN apt-get -y --force-yes install wget apt-transport-https
@@ -34,7 +34,6 @@ libdbd-sqlite3-perl \
 libtext-diff-perl \
 libdbi-perl
 
-
 RUN wget http://fhem.de/fhem-5.8.deb
 RUN dpkg -i fhem-5.8.deb
 RUN apt-get -y --force-yes install supervisor telnet postgresql-client nano 
@@ -43,7 +42,7 @@ RUN mkdir -p /var/log/supervisor
 #RUN timedatectl set-timezone Europe/Berlin
 
 #Copy supervisor configuration
-COPY supervisord.conf ${supervisor_conf}
+COPY ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 VOLUME ["/opt/fhem"]
 EXPOSE 8083
