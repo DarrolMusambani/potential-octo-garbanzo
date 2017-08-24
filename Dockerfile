@@ -14,7 +14,11 @@ supervisor \
 telnet \
 postgresql-client \
 nano \
-build-essential 
+build-essential \
+cifs-utils \
+smbclient \
+keyutils \
+cpanminus 
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -41,8 +45,7 @@ libcgi-pm-perl \
 sqlite3 \
 libdbd-sqlite3-perl \
 libtext-diff-perl \
-libdbi-perl \
-cpanminus \
+libdbi-perl
 
 RUN cpanm Net::MQTT::Simple
 RUN cpanm Net::MQTT::Constants
