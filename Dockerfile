@@ -42,7 +42,7 @@ RUN mkdir -p /var/log/supervisor
 #RUN timedatectl set-timezone Europe/Berlin
 
 #Copy supervisor configuration
-COPY ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 VOLUME ["/opt/fhem"]
 EXPOSE 8083
