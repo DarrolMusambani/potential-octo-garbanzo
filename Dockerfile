@@ -45,7 +45,11 @@ libcgi-pm-perl \
 sqlite3 \
 libdbd-sqlite3-perl \
 libtext-diff-perl \
-libdbi-perl
+libdbi-perl\
+#Add. Packages for GoogleAuthenticator
+libconvert-base32-perl \
+libauthen-oath-perl \
+libcrypt-urandom-perl
 
 RUN cpanm Net::MQTT::Simple
 RUN cpanm Net::MQTT::Constants
