@@ -18,7 +18,6 @@ build-essential \
 cifs-utils \
 smbclient \
 keyutils \
-openssh-server \
 cpanminus 
 
 # Install perl packages
