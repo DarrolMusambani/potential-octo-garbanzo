@@ -46,6 +46,7 @@ sqlite3 \
 libdbd-sqlite3-perl \
 libtext-diff-perl \
 libdbi-perl \
+libcrypt-rijndael-perl \
 #Add. Packages for GoogleAuthenticator
 libconvert-base32-perl \
 libauthen-oath-perl \
