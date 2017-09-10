@@ -54,6 +54,7 @@ libcrypt-urandom-perl
 
 RUN cpanm Net::MQTT::Simple
 RUN cpanm Net::MQTT::Constants
+RUN cpanm Text::Unidecode
 
 # Set the locale
 RUN apt-get install -y locales locales-all
