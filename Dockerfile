@@ -32,6 +32,7 @@ libio-socket-ip-perl \
 libio-socket-multicast-perl \
 libjson-perl \
 libjson-xs-perl \
+libjson-pp-perl \
 libmail-sendmail-perl \
 libsocket-perl \
 libswitch-perl \
