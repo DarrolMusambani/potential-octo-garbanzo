@@ -32,7 +32,6 @@ libio-socket-ip-perl \
 libio-socket-multicast-perl \
 libjson-perl \
 libjson-xs-perl \
-libjson-pp-perl \
 libmail-sendmail-perl \
 libsocket-perl \
 libswitch-perl \
@@ -57,7 +56,6 @@ RUN cpanm Net::MQTT::Simple \
 Net::MQTT::Constants \
 Text::Unidecode \
 Net::Telnet \
-Task::Weaken \
 SOAP::Lite 
 
 # Set the locale
