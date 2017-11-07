@@ -57,6 +57,7 @@ RUN cpanm Net::MQTT::Simple \
 Net::MQTT::Constants \
 Text::Unidecode \
 Net::Telnet \
+Task::Weaken \
 SOAP::Lite 
 
 # Set the locale
