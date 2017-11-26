@@ -52,11 +52,11 @@ libconvert-base32-perl \
 libauthen-oath-perl \
 libcrypt-urandom-perl
 
-RUN cpanm -i Net::MQTT::Simple \
+RUN cpan install Net::MQTT::Simple \
 Net::MQTT::Constants \
 Text::Unidecode \
 Net::Telnet \
-SOAP::Lite 
+SOAP::Lite
 
 # Set the locale
 RUN apt-get install -y locales locales-all
