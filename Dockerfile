@@ -52,7 +52,7 @@ libconvert-base32-perl \
 libauthen-oath-perl \
 libcrypt-urandom-perl
 
-RUN cpanm install Net::MQTT::Simple \
+RUN cpanm -i Net::MQTT::Simple \
 Net::MQTT::Constants \
 Text::Unidecode \
 Net::Telnet \
