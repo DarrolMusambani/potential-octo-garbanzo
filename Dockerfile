@@ -83,7 +83,7 @@ RUN rm /fhem-5.8.deb
 #Copy supervisor configuration
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
+COPY initContainer.sh /opt/fhem/initContainer.sh
 VOLUME ["/opt/fhem"]
 EXPOSE 8083
 
