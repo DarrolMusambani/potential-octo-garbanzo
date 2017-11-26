@@ -1,8 +1,7 @@
-FROM ubuntu:17.04
+FROM ubuntu:16.04
 
 MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
 
-ENV supervisor_conf /etc/supervisor/conf.d/supervisord.conf
 ENV TZ 'Europe/Berlin'
 
 # Install Main Packages
@@ -10,7 +9,6 @@ RUN apt-get update
 RUN apt-get -y --force-yes install wget  \
 apt-transport-https  \
 mosquitto-clients \
-supervisor \
 telnet \
 postgresql-client \
 nano \
@@ -80,11 +78,8 @@ RUN dpkg -i fhem-5.8.deb
 RUN apt-get clean && apt-get autoremove
 RUN rm /fhem-5.8.deb
 
-#Copy supervisor configuration
-RUN mkdir -p /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY initContainer.sh /opt/fhem/initContainer.sh
+COPY initContainer.sh wrapper.sh
 VOLUME ["/opt/fhem"]
 EXPOSE 8083
 
-CMD ["/usr/bin/supervisord"]
+CMD ./wrapper.sh
