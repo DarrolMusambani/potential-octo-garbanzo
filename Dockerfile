@@ -17,7 +17,11 @@ cifs-utils \
 smbclient \
 keyutils \
 openssh-server \
-cpanminus 
+cpanminus \
+bluetooth \
+bluez-hcidump \
+bluez \
+blueman
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -80,6 +84,9 @@ RUN rm /fhem-5.8.deb
 
 COPY initContainer.sh wrapper.sh
 VOLUME ["/opt/fhem"]
+
 EXPOSE 8083
+EXPOSE 8084
+EXPOSE 7072
 
 CMD ./wrapper.sh
