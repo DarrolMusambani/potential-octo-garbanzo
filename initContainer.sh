@@ -1,9 +1,4 @@
 #!/bin/bash
-SMB_IP="100.10.1.10"
-SHARE_NAME="public/FhemBackup"
-SMB_PATH="/media/WDMYCLOUD/"
-INIT_FHEM="/etc/init.d/fhem"
-FHEM_PATH="/opt/fhem/"
 mkdir $SMB_PATH
 chown fhem:dialout $SMB_PATH
 mount -t cifs //$SMB_IP/$SHARE_NAME $SMB_PATH -o guest
