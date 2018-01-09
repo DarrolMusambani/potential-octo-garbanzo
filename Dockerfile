@@ -89,4 +89,4 @@ EXPOSE 8083
 EXPOSE 8084
 EXPOSE 7072
 
-CMD ./wrapper.sh
+CMD bash wrapper.sh
