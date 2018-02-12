@@ -50,10 +50,14 @@ libdbd-sqlite3-perl \
 libtext-diff-perl \
 libdbi-perl \
 libcrypt-rijndael-perl \
+libimage-base-bundle-perl \
+libimage-info-perl \
+libio-string-perl
 #Add. Packages for GoogleAuthenticator
 libconvert-base32-perl \
 libauthen-oath-perl \
-libcrypt-urandom-perl
+libcrypt-urandom-perl \
+
 
 RUN cpanm Net::MQTT::Simple
 RUN cpanm Net::MQTT::Constants
