@@ -52,11 +52,11 @@ libdbi-perl \
 libcrypt-rijndael-perl \
 libimage-base-bundle-perl \
 libimage-info-perl \
-libio-string-perl
+libio-string-perl \
 #Add. Packages for GoogleAuthenticator
 libconvert-base32-perl \
 libauthen-oath-perl \
-libcrypt-urandom-perl \
+libcrypt-urandom-perl 
 
 
 RUN cpanm Net::MQTT::Simple
