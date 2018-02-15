@@ -10,6 +10,7 @@ echo -n "%dbconfig= (connection => \"Pg:database=fhem;host=$DBHOST:$DBPORT\",use
 }
 activate_DB_Log {
 service fhem start
+sleep 5
 #DB-Logging aktivierencd. o
 perl fhem.pl 7072 "configdb fileimport /opt/fhem/configDB.conf"
 perl fhem.pl 7072 "define DBLogging DbLog /opt/fhem/configDB.conf .*:.*"
@@ -32,3 +33,8 @@ prepare_db {
 psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d postgres -f /create_fhem_db.sql
 psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d fhem -f /create_log_tables.sql
 }
+
+prepare_db
+activate_configDB
+activate_DB_Log
+set_basicAuth
