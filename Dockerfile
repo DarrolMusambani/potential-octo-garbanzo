@@ -87,6 +87,7 @@ RUN apt-get clean && apt-get autoremove
 RUN rm /fhem-5.8.deb
 
 COPY initContainer.sh wrapper.sh
+RUN chmod +x wrapper.sh
 VOLUME ["/opt/fhem"]
 
 EXPOSE 8083
