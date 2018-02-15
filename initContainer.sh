@@ -5,8 +5,9 @@ activate_configDB {
 sed -i -e 's/perl fhem.pl fhem.cfg.*/#perl fhem.pl fhem.cfg/g' /etc/init.d/fhem
 sed -i -e 's/#.*perl fhem.pl configDB.*/perl fhem.pl configDB/g' /etc/init.d/fhem
 
+DBCON="%dbconfig= (connection => \"Pg:database=fhem;host=$DBHOST:$DBPORT\",user => \"$DBUSER\",password => \"$PGPASSWORD\");"
 echo -n "" > /opt/fhem/configDB.conf
-echo -n "%dbconfig= (connection => \"Pg:database=fhem;host=$DBHOST:$DBPORT\",user => \"$DBUSER\",password => \"$PGPASSWORD\"); " > /opt/fhem/configDB.conf
+echo -n "$DBCON" > /opt/fhem/configDB.conf
 }
 activate_DB_Log {
 service fhem start
