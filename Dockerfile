@@ -86,12 +86,12 @@ RUN dpkg -i fhem-5.8.deb
 RUN apt-get clean && apt-get autoremove
 RUN rm /fhem-5.8.deb
 
-COPY initContainer.sh wrapper.sh
-RUN chmod +x wrapper.sh
-VOLUME ["/opt/fhem"]
+COPY initContainer.sh /wrapper.sh
+RUN chmod +x /wrapper.sh
+VOLUME /opt/fhem /etc/init.d
 
 EXPOSE 8083
 EXPOSE 8084
 EXPOSE 7072
 
-CMD [./wrapper.sh]
+CMD ./wrapper.sh
