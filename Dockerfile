@@ -94,4 +94,4 @@ EXPOSE 8083
 EXPOSE 8084
 EXPOSE 7072
 
-CMD bash
+CMD [./wrapper.sh]
