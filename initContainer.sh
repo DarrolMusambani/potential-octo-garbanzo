@@ -29,5 +29,5 @@ set_basicAuth {
 }
 
 prepare_db {
-PGPASSWORD=RsrpBxHbFFb6 && psql --host=100.10.1.30 --port=32775 --username=fhem  -d postgres
+PGPASSWORD=RsrpBxHbFFb6 && psql --host=100.10.1.30 --port=32775 --username=fhem  -d postgres -f create_fhem_db.sql
 }
