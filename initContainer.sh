@@ -27,3 +27,7 @@ set_basicAuth {
 #perl fhem.pl 7072 "attr allowed_WEB validFor WEB"
 #perl fhem.pl 7072 "set allowed_WEB basicAuth $FHEMUSER:$FHEMPASSWD"
 }
+
+prepare_db {
+PGPASSWORD=RsrpBxHbFFb6 && psql --host=100.10.1.30 --port=32775 --username=fhem  -d postgres
+}
