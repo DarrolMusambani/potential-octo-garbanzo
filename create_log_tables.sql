@@ -7,7 +7,7 @@ SET escape_string_warning = off;
 
 CREATE SCHEMA fhem;
 
-ALTER SCHEMA fhem OWNER TO fhemUser;
+ALTER SCHEMA fhem OWNER TO fhem;
 
 COMMENT ON SCHEMA fhem IS 'standard fhem schema';
 
@@ -15,7 +15,7 @@ SET search_path = fhem, pg_catalog;
 SET default_tablespace = '';
 SET default_with_oids = false;
 
-CREATE TABLE current (
+CREATE TABLE fhem.current (
     "timestamp" timestamp without time zone,
     device character varying(64),
     type character varying(64),
@@ -27,7 +27,7 @@ CREATE TABLE current (
 ALTER TABLE fhem.current OWNER TO fhem;
 
 
-CREATE TABLE history (
+CREATE TABLE fehm.history (
     "timestamp" timestamp without time zone,
     device character varying(64),
     type character varying(64),
