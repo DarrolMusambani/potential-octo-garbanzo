@@ -6,11 +6,9 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET escape_string_warning = off;
 
-DROP DATABASE fhem;
-
 CREATE DATABASE fhem
     WITH 
-    OWNER = fhemUser
+    OWNER = fhem
     ENCODING = 'UTF8'
     LC_COLLATE = 'en_US.utf8'
     LC_CTYPE = 'en_US.utf8'
@@ -18,5 +16,4 @@ CREATE DATABASE fhem
     CONNECTION LIMIT = -1;
     
 GRANT ALL ON DATABASE fhem TO postgres;
-
-GRANT ALL ON DATABASE fhem TO fhemUser;
+GRANT ALL ON DATABASE fhem TO fhem;
