@@ -9,6 +9,7 @@ DBCON="%dbconfig= (connection => \"Pg:database=fhem;host=$DBHOST:$DBPORT\",user 
 echo -n "" > /opt/fhem/configDB.conf
 echo -n "$DBCON" > /opt/fhem/configDB.conf
 }
+
 activate_DB_Log() {
 service fhem start
 sleep 5
@@ -27,7 +28,7 @@ perl /opt/fhem/fhem.pl 7072 "save"
 set_basicAuth() { 
 perl /opt/fhem/fhem.pl 7072 "define allowed_WEB allowed"
 perl /opt/fhem/fhem.pl 7072 "attr allowed_WEB validFor WEB"
-perl /opt/fhem/fhem.pl 7072 "set allowed_WEB basicAuth $FHEMUSER:$FHEMPASSWD"
+perl /opt/fhem/fhem.pl 7072 "attr allowed_WEB basicAuth $FHEMUSER:$FHEMPASSWD"
 }
 
 prepare_db() {
@@ -38,4 +39,4 @@ psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d fhem -f /create_log_ta
 prepare_db
 activate_configDB
 activate_DB_Log
-set_basicAuth
+#set_basicAuth
