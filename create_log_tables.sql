@@ -12,7 +12,7 @@ ALTER SCHEMA fhem OWNER TO fhem;
 COMMENT ON SCHEMA fhem IS 'standard fhem schema';
 
 SET search_path = fhem, pg_catalog;
-SET default_tablespace = '';
+SET default_tablespace = 'pg_default';
 SET default_with_oids = false;
 
 CREATE TABLE fhem.current (
@@ -27,7 +27,7 @@ CREATE TABLE fhem.current (
 ALTER TABLE fhem.current OWNER TO fhem;
 
 
-CREATE TABLE fehm.history (
+CREATE TABLE fhem.history (
     "timestamp" timestamp without time zone,
     device character varying(64),
     type character varying(64),
