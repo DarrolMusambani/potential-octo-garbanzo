@@ -88,8 +88,8 @@ RUN rm /fhem-5.8.deb
 
 COPY create_fhem_db.sql /create_fhem_db.sql
 COPY create_log_tables.sql /create_log_tables.sql
-COPY initContainer.sh /wrapper.sh
-RUN chmod +x /wrapper.sh
+COPY initContainer.sh /initContainer.sh
+RUN chmod +x /initContainer.sh
 
 VOLUME /opt/fhem /etc/init.d
 
@@ -97,4 +97,5 @@ EXPOSE 8083
 EXPOSE 8084
 EXPOSE 7072
 
-CMD ["/bin/bash","/wrapper.sh"]
+ENTRYPOINT ["/initContainer.sh"]
+CMD '/bin/bash'
