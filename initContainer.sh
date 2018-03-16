@@ -2,8 +2,8 @@
 
 activate_configDB() {
 #configDB aktivieren/fhem.cfg deaktivieren
-#sed -i -e 's/perl fhem.pl fhem.cfg.*/#perl fhem.pl fhem.cfg/g' /etc/init.d/fhem
-#sed -i -e 's/#.*perl fhem.pl configDB.*/perl fhem.pl configDB/g' /etc/init.d/fhem
+sed -i -e 's/perl fhem.pl fhem.cfg.*/#perl fhem.pl fhem.cfg/g' /etc/init.d/fhem
+sed -i -e 's/#.*perl fhem.pl configDB.*/perl fhem.pl configDB/g' /etc/init.d/fhem
 
 DBCON="%dbconfig= (connection => \"Pg:database=fhem;host=$DBHOST;port=$DBPORT;\",user => \"$DBUSER\",password => \"$PGPASSWORD\");"
 echo -n "" > /opt/fhem/configDB.conf
