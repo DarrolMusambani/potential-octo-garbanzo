@@ -12,7 +12,6 @@ echo -n "$DBCON" > /opt/fhem/configDB.conf
 
 activate_DB_Log() {
 service fhem start
-sleep 5
 #DB-Logging aktivierencd. o
 perl /opt/fhem/fhem.pl 7072 "configdb fileimport /opt/fhem/configDB.conf"
 perl /opt/fhem/fhem.pl 7072 "define DBLogging DbLog /opt/fhem/configDB.conf .*:.*"
@@ -27,11 +26,11 @@ perl /opt/fhem/fhem.pl 7072 "save"
 
 set_basicAuth() { 
 auth=$(echo -ne "$FHEMUSER:$FHEMPASSWD" | base64)
-perl /opt/fhem/fhem.pl 7072 "define allowed_WEB allowed"
-perl /opt/fhem/fhem.pl 7072 "attr allowed_WEB validFor WEB"
-perl /opt/fhem/fhem.pl 7072 "attr allowed_WEB basicAuth $auth"
+perl /opt/fhem/fhem.pl 7072 "define allowed_FHEMWEB allowed"
+perl /opt/fhem/fhem.pl 7072 "attr allowed_FHEMWEB validFor FHEMWEB"
+perl /opt/fhem/fhem.pl 7072 "attr allowed_FHEMWEB basicAuth $auth"
 perl /opt/fhem/fhem.pl 7072 "save"
-perl /opt/fhem/fhem.pl 7072 "update all"
+#perl /opt/fhem/fhem.pl 7072 "update all"
 perl /opt/fhem/fhem.pl 7072 "shutdown restart"
 }
 
@@ -41,6 +40,6 @@ psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d fhem -f /create_log_ta
 }
 
 prepare_db
-activate_configDB
+#activate_configDB
 activate_DB_Log
 set_basicAuth
