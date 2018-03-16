@@ -2,8 +2,8 @@
 
 activate_configDB() {
 #configDB aktivieren/fhem.cfg deaktivieren
-sed -i -e 's/perl fhem.pl fhem.cfg.*/#perl fhem.pl fhem.cfg/g' /etc/init.d/fhem
-sed -i -e 's/#.*perl fhem.pl configDB.*/perl fhem.pl configDB/g' /etc/init.d/fhem
+#sed -i -e 's/perl fhem.pl fhem.cfg.*/#perl fhem.pl fhem.cfg/g' /etc/init.d/fhem
+#sed -i -e 's/#.*perl fhem.pl configDB.*/perl fhem.pl configDB/g' /etc/init.d/fhem
 
 DBCON="%dbconfig= (connection => \"Pg:database=fhem;host=$DBHOST;port=$DBPORT;\",user => \"$DBUSER\",password => \"$PGPASSWORD\");"
 echo -n "" > /opt/fhem/configDB.conf
@@ -27,8 +27,8 @@ perl /opt/fhem/fhem.pl 7072 "save"
 set_basicAuth() { 
 auth=$(echo -ne "$FHEMUSER:$FHEMPASSWD" | base64)
 perl /opt/fhem/fhem.pl 7072 "define allowed_FHEMWEB allowed"
-perl /opt/fhem/fhem.pl 7072 "attr allowed_FHEMWEB validFor FHEMWEB"
 perl /opt/fhem/fhem.pl 7072 "attr allowed_FHEMWEB basicAuth $auth"
+perl /opt/fhem/fhem.pl 7072 "attr allowed_FHEMWEB validFor WEB,WEBphone,WEBtablet,telnetPort"
 perl /opt/fhem/fhem.pl 7072 "save"
 #perl /opt/fhem/fhem.pl 7072 "update all"
 perl /opt/fhem/fhem.pl 7072 "shutdown restart"
@@ -40,6 +40,6 @@ psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d fhem -f /create_log_ta
 }
 
 prepare_db
-#activate_configDB
+activate_configDB
 activate_DB_Log
 set_basicAuth
