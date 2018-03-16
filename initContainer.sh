@@ -35,7 +35,7 @@ perl /opt/fhem/fhem.pl 7072 "shutdown restart"
 }
 
 prepare_db() {
-psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d postgres -f /create_fhem_db.sql
+#psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d postgres -f /create_fhem_db.sql
 psql --host=$DBHOST --port=$DBPORT --username=$DBUSER  -d fhem -f /create_log_tables.sql
 }
 
