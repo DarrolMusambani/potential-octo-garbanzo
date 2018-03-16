@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:17.10
 
 MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
 
@@ -21,7 +21,8 @@ cpanminus \
 bluetooth \
 bluez-hcidump \
 bluez \
-blueman
+blueman \
+sshpass
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -98,4 +99,4 @@ EXPOSE 8084
 EXPOSE 7072
 
 ENTRYPOINT ["/initContainer.sh"]
-CMD '/bin/bash'
+CMD 'bash'
