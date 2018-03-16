@@ -22,7 +22,8 @@ bluetooth \
 bluez-hcidump \
 bluez \
 blueman \
-sshpass
+sshpass \
+cron
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -98,5 +99,4 @@ EXPOSE 8083
 EXPOSE 8084
 EXPOSE 7072
 
-ENTRYPOINT ["/initContainer.sh"]
-CMD 'bash'
+ENTRYPOINT ["initContainer.sh"]
