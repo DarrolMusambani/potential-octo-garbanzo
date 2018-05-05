@@ -20,8 +20,7 @@ bluetooth \
 bluez-hcidump \
 bluez \
 blueman \
-sshpass \
-cron
+sshpass
 
 # Install perl packages
 RUN apt-get -y --force-yes install libalgorithm-merge-perl \
@@ -58,7 +57,6 @@ libconvert-base32-perl \
 libauthen-oath-perl \
 libcrypt-urandom-perl 
 
-
 RUN cpanm Net::MQTT::Simple
 RUN cpanm Net::MQTT::Constants
 RUN cpanm Text::Unidecode
@@ -85,6 +83,10 @@ RUN dpkg -i fhem-5.8.deb
 #Cleaning up
 RUN apt-get clean && apt-get autoremove
 RUN rm /fhem-5.8.deb
+
+#Run fhem as root
+RUN chown -R  root:root /opt
+RUN userdel fhem
 
 COPY create_fhem_db.sql /create_fhem_db.sql
 COPY create_log_tables.sql /create_log_tables.sql
