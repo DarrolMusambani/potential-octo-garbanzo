@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
+
 ENV TZ 'Europe/Berlin'
 
 # Install Main Packages
