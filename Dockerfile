@@ -1,6 +1,4 @@
-FROM ubuntu:17.10
-
-MAINTAINER DarrolMusambani <d.mrugalla@gmail.com>
+FROM ubuntu:18.04
 
 ENV TZ 'Europe/Berlin'
 
