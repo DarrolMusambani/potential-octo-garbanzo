@@ -101,4 +101,4 @@ EXPOSE 8083
 EXPOSE 8084
 EXPOSE 7072
 
-ENTRYPOINT ["initContainer.sh"]
+ENTRYPOINT ["/bin/bash"]
