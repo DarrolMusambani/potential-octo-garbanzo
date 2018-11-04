@@ -54,6 +54,9 @@ libcrypt-rijndael-perl \
 libimage-base-bundle-perl \
 libimage-info-perl \
 libio-string-perl \
+snmpd \
+snmp \ 
+snmp-mibs-downloader \
 #Add. Packages for GoogleAuthenticator
 libconvert-base32-perl \
 libauthen-oath-perl \
@@ -61,9 +64,11 @@ libcrypt-urandom-perl
 
 RUN cpanm Net::MQTT::Simple
 RUN cpanm Net::MQTT::Constants
-RUN cpanm Text::Unidecode
+RUN cpanm Net::SNMP
 RUN cpanm Net::Telnet
+RUN cpanm Text::Unidecode
 RUN cpanm SOAP::Lite
+
 
 # Set the locale
 RUN apt-get install -y locales locales-all
@@ -79,12 +84,12 @@ RUN echo $TZ > /etc/timezone && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
-RUN wget http://fhem.de/fhem-5.8.deb
-RUN dpkg -i fhem-5.8.deb
+RUN wget http://fhem.de/fhem-5.9.deb
+RUN dpkg -i fhem-5.9.deb
 
 #Cleaning up
 RUN apt-get clean && apt-get autoremove
-RUN rm /fhem-5.8.deb
+RUN rm /fhem-5.9.deb
 
 #Run fhem as root
 RUN chown -R  root:root /opt
